@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Log</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="https://raw.githubusercontent.com/bmj99/uvu_darklight_theme/main/public/img/uvu_mono_green.png"
+    />
+  </head>
+  <body
+    onload="setup()"
+    class="font-sans bg-uvu-light dark:bg-uvu-dark bg-cover bg-center bg-fixed"
+  >
+    <!-- <body
+    onload="testMe()"
+    class="font-sans bg-uvu-light dark:bg-uvu-dark bg-cover bg-center bg-fixed"
+  > -->
+    <form
+      class="
+        p-5
+        m-10
+        md:m-20
+        bg-white bg-opacity-50
+        dark:bg-uvu-grey-d2 dark:bg-opacity-80
+        rounded
+      "
+    >
+      <div id="courseDiv" class="md:flex">
+        <!-- Choose Course Selection-->
+        <select
+          aria-label="Select Course"
+          id="course"
+          name="course"
+          data-cy="course_select"
+          class="
+            p-3
+            bg-uvu-green-l2
+            text-uvu-grey
+            rounded-full
+            mr-5
+            mb-5
+            cursor-pointer
+            hover:bg-uvu-green-d2
+          "
+        >
+          <option selected value="">Choose Course</option>
+        </select>
+
+        <!-- UVU ID Text Field-->
+        <input
+          type="text"
+          id="uvuId"
+          name="uvuId"
+          value=""
+          data-cy="uvuId_input"
+          placeholder="UVU ID . . ."
+          class="
+            p-3
+            pl-5
+            bg-uvu-grey-l1
+            hidden
+            rounded-full
+            border-2 border-uvu-green
+            placeholder-uvu-grey-d1
+            mb-5
+            mr-5
+            hover:bg-uvu-grey
+            dark:bg-uvu-green-l1 dark:text-uvu-grey
+          "
+        />
+
+        <!-- Toggle Theme Button -->
+        <button
+          type="button"
+          id="theme-toggle"
+          class="
+            p-3
+            bg-uvu-green-l2
+            text-uvu-grey
+            rounded-full
+            mr-5
+            mb-5
+            cursor-pointer
+            hover:bg-uvu-green-d2
+          "
+        >
+          Toggle Theme
+        </button>
+      </div>
+      <div class="lg:flex">
+        <!-- Display Logs Div -->
+        <div
+          id="logsDisplayDiv"
+          class="
+            p-3
+            bg-uvu-grey-l1
+            dark:bg-uvu-green-d1
+            rounded
+            mb-5
+            lg:w-2/3 lg:mr-5
+            h-full
+          "
+        >
+          <!-- Student Logs -->
+          <h3
+            id="uvuIdDisplay"
+            data-cy="uvuIdDisplay"
+            class="pb-3 text-xl text-uvu-green dark:text-uvu-grey"
+          >
+            Student Logs
+          </h3>
+          <ul id="logsDisplay" data-cy="logs"></ul>
+        </div>
+
+        <!-- New Log Div -->
+        <div
+          id="newLogDiv"
+          class="p-3 rounded lg:w-1/3 bg-uvu-grey-l1 dark:bg-uvu-green-d1"
+        >
+          <!-- New Log Textbox -->
+          <h3 class="pb-3 text-xl text-uvu-green dark:text-uvu-grey">
+            New Log
+          </h3>
+          <textarea
+            id="newLogText"
+            style="height: 75px"
+            aria-label="add log textarea"
+            data-cy="log_textarea"
+            placeholder="Today, I ..."
+            class="
+              p-3
+              rounded
+              bg-uvu-grey
+              border-l-4 border-uvu-green
+              w-full
+              h-full
+              mb-3
+              dark:bg-uvu-green-l2 dark:text-uvu-grey
+            "
+          ></textarea>
+          <br />
+
+          <!-- Add Log Button -->
+          <button
+            type="button"
+            id="addLogBtn"
+            data-cy="add_log_btn"
+            class="
+              rounded-full
+              bg-uvu-green-l2
+              text-uvu-grey
+              font-rajdhani
+              pl-5
+              pr-5
+              p-2
+              hover:bg-uvu-green-d2
+            "
+            disabled
+          >
+            Add Log
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            backgroundImage: {
+              'uvu-light':
+                "url('https://raw.githubusercontent.com/bmj99/uvu_darklight_theme/main/public/img/uvu_bg_green_light.jpg')",
+              'uvu-dark':
+                "url('https://raw.githubusercontent.com/bmj99/uvu_darklight_theme/main/public/img/uvu_bg_green_dark.jpg')",
+            },
+            colors: {
+              'uvu-green': '#275d38',
+              'uvu-green-l3': '#6f937a',
+              'uvu-green-l2': '#578164',
+              'uvu-green-l1': '#3f6f4e',
+              'uvu-green-d1': '#235332',
+              'uvu-green-d2': '#1e482c',
+              'uvu-grey': '#e8e8e8',
+              'uvu-grey-l1': '#f9f9f9',
+              'uvu-grey-d1': '#545454',
+              'uvu-grey-d2': '#2b2b2b',
+              'uvu-fern': '#78be20',
+              'uvu-fern-l3': '#f2f9e9',
+              'uvu-fern-l2': '#c9e5a6',
+              'uvu-fern-l1': '#a1d263',
+              'uvu-fern-d1': '#548516',
+              'uvu-fern-d2': '#304c0d',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="jQL.js"></script>
+    <script src="script.js"></script>
+    <!-- <script src="test_script.js"></script> -->
+  </body>
+</html>
+
+<!-- ------------------------------------------------------------------------------ -->
+<!-- UVU Brand Dark/Like Practicum Requirements -->
+<!-- ------------------------------------------------------------------------------ -->
+
+<!-- DONE: Make it look like it belongs to the University -->
+<!-- DONE: Use only UVU official color pallet -->
+<!-- DONE: Use only UVU official fonts -->
+<!-- DONE: Use UVU suggested design guidelines -->
+<!-- DONE: Use UVU favicon -->
+<!-- DONE: Put at least one UVU graphic on the page -->
+<!-- DONE: Design how the user will pick light or dark mode in the gui -->
+<!-- DONE: Change the display when the user changes mode -->
+<!-- DONE: Store the users mode pref in cookie or local storage -->
+<!-- DONE: Print to the console the User, browser, and OS preferences -->
