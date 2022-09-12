@@ -9,6 +9,18 @@ const app = express()
 
 
 // REST Endpoints / Routes
+// CRUDL
+
+// Create
+
+// Read get 1
+
+// Update
+
+// Delete delete
+
+// List get all
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 })
