@@ -9,13 +9,11 @@ const app = express()
 
 
 // REST Endpoints / Routes
-// CRUDL
-
-// Create
+// Create post: server gives the ID. 
 
 // Read get 1
 
-// Update
+// Update put: client specifies the ID, fully replaces. patch: partial replace
 
 // Delete delete
 
