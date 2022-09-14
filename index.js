@@ -3,12 +3,16 @@ const PORT = 3000;
 const db = require('./db.json');
 
 const express = require('express');
+const logger = require('morgan');
 
 const app = express();
 
 // Load Middleware
-// internal
-app.use(express.static('public'));
+app.use(logger('dev')); // external middleware
+// bodyparse external
+// helmet external
+
+app.use(express.static('public')); // internal middleware
 
 // REST Endpoints / Routes
 // Create post: server gives the ID.
