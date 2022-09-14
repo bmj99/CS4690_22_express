@@ -14,6 +14,8 @@ app.use(logger('dev')); // external middleware
 
 app.use(express.static('public')); // internal middleware
 
+console.log('Stuff!');
+
 // REST Endpoints / Routes
 // Create post: server gives the ID.
 
